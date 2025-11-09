@@ -15,7 +15,7 @@ npm install -g buildly
 Or run it directly without installing:
 
 ```
-npx @iamrahulsharma/buildly g <name> --react
+npx buildly g <name> --react
 ```
 
 ## Features
