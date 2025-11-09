@@ -2,16 +2,17 @@ import esbuild from "esbuild";
 
 esbuild
   .build({
-    entryPoints: ["index.js"], // your main CLI file
+    entryPoints: ["index.js"], // main CLI file
     bundle: true,
-    platform: "node", // Node.js CLI
-    target: ["node16"], // or your Node.js version
+    platform: "node",
+    target: ["node16"], // or node22
     outfile: "dist/index.js",
     sourcemap: true,
+    format: "esm", // <--- important for ESM
     banner: {
-      js: "", // make it executable
+      js: "", // makes it executable
     },
-    external: ["inquirer", "commander"], // leave external dependencies unbundled if you want
+    external: ["inquirer", "commander", "fs", "path"], // leave these unbundled
   })
   .then(() => {
     console.log("✅ Build completed successfully!");

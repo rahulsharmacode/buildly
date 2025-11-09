@@ -1,32 +1,10 @@
 #!/usr/bin/env node
-var __create = Object.create;
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getProtoOf = Object.getPrototypeOf;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-  // If the importer is in node compatibility mode or this is not an ESM
-  // file that has been converted to a CommonJS file using a Babel-
-  // compatible transform (i.e. "__esModule" has not been set), then set
-  // "default" to the CommonJS "module.exports" for node compatibility.
-  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
-  mod
-));
 
 // index.js
-var import_inquirer = __toESM(require("inquirer"), 1);
-var import_fs = require("fs");
-var import_commander = require("commander");
-var import_path = __toESM(require("path"), 1);
+import inquirer from "inquirer";
+import { promises as fs } from "fs";
+import { Command } from "commander";
+import path from "path";
 
 // constant/structure.js
 var structures = {
@@ -217,10 +195,10 @@ export default router;
 };
 
 // index.js
-var program = new import_commander.Command();
+var program = new Command();
 program.name("react").version("1.0.0").description("React component generator CLI");
 program.command("g <name>").description("Generate a component or folder").option("--react", "Generate React component structure").option("--next", "Generate Next.js folder structure").option("--express", "Generate Express.js folder structure").option("--no-extend", "Ignore extened folders files").action((name, option) => {
-  const componentPath = import_path.default.join(process.cwd(), name);
+  const componentPath = path.join(process.cwd(), name);
   console.log(name, option);
   createFile(name, option);
 });
@@ -240,7 +218,7 @@ var createFile = async (name, option) => {
   }
 };
 var userInputs = async () => {
-  const answer = import_inquirer.default.prompt([
+  const answer = inquirer.prompt([
     {
       type: "list",
       name: "extension",
@@ -264,25 +242,25 @@ async function createStructure(type, folderName, extend = false, fileInfo = { ex
   for (const folder in base) {
     if (folder === "extends") continue;
     const files = base[folder];
-    const fullFolderPath = import_path.default.join(process.cwd(), folder);
-    await import_fs.promises.mkdir(fullFolderPath, { recursive: true });
+    const fullFolderPath = path.join(process.cwd(), folder);
+    await fs.mkdir(fullFolderPath, { recursive: true });
     for (const file of files) {
       const fileName = fileInfo.extension === "JavaScript" ? file : file.replace(".j", ".t");
-      const filePath = import_path.default.join(fullFolderPath, fileName);
+      const filePath = path.join(fullFolderPath, fileName);
       const content = getTemplate(type, file, folderName);
-      await import_fs.promises.writeFile(filePath, fileInfo.template == "yes" ? content : "");
+      await fs.writeFile(filePath, fileInfo.template == "yes" ? content : "");
     }
   }
   if (extend && base.extends) {
     for (const extraFolder in base.extends) {
       const files = base.extends[extraFolder];
-      const fullFolderPath = import_path.default.join(process.cwd(), folderName, extraFolder);
-      await import_fs.promises.mkdir(fullFolderPath, { recursive: true });
+      const fullFolderPath = path.join(process.cwd(), folderName, extraFolder);
+      await fs.mkdir(fullFolderPath, { recursive: true });
       for (const file of files) {
         const fileName = fileInfo.extension === "JavaScript" ? file : file.replace(".j", ".t");
-        const filePath = import_path.default.join(fullFolderPath, fileName);
+        const filePath = path.join(fullFolderPath, fileName);
         const content = getTemplate(type, file, folderName, extraFolder);
-        await import_fs.promises.writeFile(filePath, fileInfo.template == "yes" ? content : "");
+        await fs.writeFile(filePath, fileInfo.template == "yes" ? content : "");
       }
     }
   }
