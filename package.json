@@ -1,18 +1,47 @@
 {
-  "name": "firepath",
+  "name": "buildly",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "build": "node esbuild.config.js",
-    "prepublishOnly": "npm run lint && npm run build",
+    "prepublishOnly": " npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
     "mycli": "./bin/cli.js"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahulsharmacode/buildly"
+  },
+  "bugs": {
+    "url": "https://github.com/rahulsharmacode/buildly/issues"
+  },
+  "homepage": "https://rahulsharma.com.np/npm/buildly",
+  "keywords": [
+    "react",
+    "nextjs",
+    "express",
+    "cli",
+    "scaffolding",
+    "boilerplate",
+    "generator",
+    "project-generator",
+    "folder",
+    "redux",
+    "react-cli",
+    "nextjs-cli",
+    "express-cli",
+    "zustand",
+    "template-generator",
+    "nestjs",
+    "typescript",
+    "javascript",
+    "web-development",
+    "dev-tool"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
