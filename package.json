@@ -1,6 +1,6 @@
 {
   "name": "buildly",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rahulsharmacode/buildly"
+    "url": "git+https://github.com/rahulsharmacode/buildly.git"
   },
   "bugs": {
     "url": "https://github.com/rahulsharmacode/buildly/issues"

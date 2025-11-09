@@ -4,6 +4,20 @@
 
 **Buildly** is a CLI tool to quickly generate standardized folder structures for **React, Next.js, and Express.js** projects. It pre-populates your project with boilerplate files for components, pages, forms, hooks, constants, interfaces, routes, controllers, and schemas, making it faster to start development.
 
+## Installation
+
+You can install **Buildly** globally using npm:
+
+```bash
+npm install -g buildly
+```
+
+Or run it directly without installing:
+
+```
+npx @iamrahulsharma/buildly g <name> --react
+```
+
 ## Features
 
 - **Customizable Folder Structure**: Automatically creates a clean, organized folder structure for React, Next.js, or Express.js projects.
@@ -28,9 +42,6 @@ Home/
 └─ interface/
 └─ index.js
 
-shell
-Copy code
-
 ### Next.js Example
 
 Dashboard/
@@ -45,9 +56,6 @@ Dashboard/
 │ └─ index.js
 └─ interface/
 └─ index.js
-
-shell
-Copy code
 
 ### Express.js Example
 
@@ -66,9 +74,7 @@ Install Buildly globally using npm:
 
 ```bash
 npm install -g buildly
-Usage
-bash
-Copy code
+
 # Generate a new folder or component structure
 buildly g <name> --react
 buildly g <name> --next
