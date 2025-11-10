@@ -21,9 +21,23 @@ program
   .option("--express", "Generate Express.js folder structure")
   .option("--no-extend", "Ignore extened folders files")
 
-  .action((name, option) => {
-    const componentPath = path.join(process.cwd(), name);
-    console.log(name, option);
+  .action(async (name, option) => {
+    if (!option.react && !option.next && !option.express) {
+      const answer = await inquirer.prompt([
+        {
+          type: "list",
+          name: "framework",
+          message: "Choose a framework:",
+          choices: ["React.Js", "Next.Js", "Express.Js"],
+        },
+      ]);
+
+      // Set the selected framework flag
+      if (answer.framework === "React.Js") option.react = true;
+      if (answer.framework === "Next.Js") option.next = true;
+      if (answer.framework === "Express.Js") option.express = true;
+    }
+
     createFile(name, option);
   });
 

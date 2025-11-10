@@ -1,6 +1,6 @@
 {
   "name": "buildly",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/rahulsharmacode/buildly/issues"
   },
-  "homepage": "https://rahulsharma.com.np/npm/buildly",
+  "homepage": "https://build-ly.netlify.app/",
   "keywords": [
     "react",
     "nextjs",
